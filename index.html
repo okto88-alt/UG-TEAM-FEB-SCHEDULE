@@ -1,109 +1,61 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<link rel="stylesheet" href="style.css">
-
     <meta charset="UTF-8">
-    <title>UG TEAM - December 2025</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            padding: 20px;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        .container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 900px;
-            margin: auto;
-        }
-        ul {
-            line-height: 1.8;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-        th {
-            background-color: #f0f0f0;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
-        }
-    </style>
+    <title>Shift Schedule Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="container">
-    <h1>Jadwal Tim Web - Januari</h1>
+<div class="app">
 
-    <h2>Morning Shift</h2>
-    <ul>
-        <li>Chandy</li>
-        <li>Kenny</li>
-        <li>Anggie</li>
-	<li>Andy</li>
-        <li>Firman</li>
-	<li>Nibras</li>
-	<li>Angga</li>
-        <li>Jerry</li>
-    </ul>
+    <!-- LEFT PANEL -->
+    <aside class="sidebar">
+        <h3>Shift Pagi</h3>
+        <ul id="shiftPagi"></ul>
 
-    <h2>Night Shift</h2>
-    <ul>
-        <li>Vindy</li>
-        <li>Kris</li>
-        <li>Heno</li>
-        <li>Dea</li>
-        <li>Alfan</li>
-        <li>Valvi</li>
-        <li>Kheiren</li>
-        <li>Sindy</li>
-    </ul>
+        <h3>Shift Malam</h3>
+        <ul id="shiftMalam"></ul>
+    </aside>
 
-<table>
-    <thead>
-        <tr>
-            <th class="date">Date</th>
-            <th class="suria">SURIA88</th>
-            <th class="hakabet">HAKABET</th>
-            <th class="viobet">VIOBET</th>
-            <th class="tempo">TEMPO88</th>
-            <th class="fila">FILA88</th>
-            <th class="ijobet">IJOBET</th>
-            <th class="hahawin">HAHAWIN88</th>
-            <th class="offday">OFF DAY UG</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="date">10-Dec-2025</td>
-            <td class="suria">Dea</td>
-            <td class="hakabet">Kris</td>
-            <td class="viobet">Heno</td>
-            <td class="tempo">Alfan</td>
-            <td class="fila">Kheiren</td>
-            <td class="ijobet">Sindy</td>
-            <td class="hahawin">Valvi</td>
-            <td class="offday">-</td>
-        </tr>
-    </tbody>
-</table>
+    <!-- MAIN CONTENT -->
+    <main class="content">
+        <!-- SEARCH -->
+        <div class="top-bar">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search staff name..."
+                oninput="searchNama()"
+            >
+        </div>
 
-            </tr>
-            <!-- Tambahkan baris sesuai kebutuhan -->
-        </tbody>
-    </table>
+        <!-- RESULT -->
+        <div id="searchResult" class="search-result"></div>
+
+        <!-- SCHEDULE -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>SURIA88</th>
+                        <th>HAKABET</th>
+                        <th>VIOBET</th>
+                        <th>TEMPO88</th>
+                        <th>FILA88</th>
+                        <th>IJOBET</th>
+                        <th>HAHAWIN88</th>
+                    </tr>
+                </thead>
+                <tbody id="scheduleBody"></tbody>
+            </table>
+        </div>
+    </main>
+
 </div>
 
+<script src="script.js"></script>
 </body>
 </html>
