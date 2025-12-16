@@ -1,61 +1,68 @@
+/* ===============================
+   DESIGN SYSTEM
+================================ */
+:root {
+    --primary: #1A2D42;
+    --secondary: #2E4156;
+    --muted: #AAB7B7;
+    --bg-soft: #C0C8CA;
+    --surface: #D4D8DD;
+    --white: #ffffff;
+}
+
+/* RESET */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+/* BODY */
 body {
-    background: linear-gradient(135deg, #f7e7eb, #e7effa);
+    background: linear-gradient(180deg, var(--bg-soft), var(--secondary));
     padding: 30px;
+    color: var(--primary);
 }
 
+/* APP WRAPPER */
 .app {
     display: flex;
-    background: #ffffff;
-    border-radius: 16px;
+    background: var(--surface);
+    border-radius: 18px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    box-shadow: 0 30px 60px rgba(26, 45, 66, 0.25);
 }
 
-/* LEFT */
+/* ===============================
+   SIDEBAR
+================================ */
 .sidebar {
     width: 260px;
-    background: #fafafa;
-    padding: 25px;
-    border-right: 1px solid #eee;
-}
-
-.sidebar h3 {
-    font-size: 14px;
-    margin-bottom: 10px;
-    color: #555;
-}
-
-.sidebar ul {
-    margin-bottom: 20px;
-}
-
-.sidebar li {
-    list-style: none;
-    padding: 6px 0;
-    font-size: 13px;
+    padding: 24px;
+    background: linear-gradient(
+        180deg,
+        var(--white),
+        var(--surface)
+    );
+    border-right: 1px solid rgba(26, 45, 66, 0.08);
 }
 
 /* SHIFT BOX */
 .shift-box {
-    background: #ffffff;
-    border-radius: 10px;
-    padding: 15px 18px;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 16px 18px;
     margin-bottom: 20px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+    box-shadow: 0 10px 25px rgba(26, 45, 66, 0.08);
 }
 
 .shift-box h3 {
     font-size: 13px;
     font-weight: 600;
-    color: #444;
+    letter-spacing: 0.3px;
     margin-bottom: 12px;
+    color: var(--secondary);
 }
 
 .shift-box ul {
@@ -65,68 +72,94 @@ body {
 .shift-box li {
     font-size: 13px;
     padding: 6px 0;
-    color: #555;
-    border-bottom: 1px solid #f0f0f0;
+    color: var(--primary);
+    border-bottom: 1px solid rgba(26, 45, 66, 0.08);
 }
 
 .shift-box li:last-child {
     border-bottom: none;
 }
 
-
-/* RIGHT */
+/* ===============================
+   CONTENT
+================================ */
 .content {
     flex: 1;
-    padding: 25px;
+    padding: 26px;
 }
 
 /* SEARCH */
 .top-bar {
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .top-bar input {
     width: 280px;
-    padding: 10px 14px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
+    padding: 11px 16px;
+    border-radius: 12px;
+    border: none;
+    background: var(--white);
     font-size: 13px;
+    box-shadow: 0 8px 20px rgba(26, 45, 66, 0.12);
+    outline: none;
+}
+
+.top-bar input::placeholder {
+    color: var(--muted);
 }
 
 /* SEARCH RESULT */
 .search-result {
     font-size: 13px;
-    margin-bottom: 15px;
-    color: #444;
+    margin-bottom: 16px;
+    color: var(--secondary);
 }
 
-/* TABLE */
+/* ===============================
+   TABLE
+================================ */
 .table-wrapper {
-    background: #fff;
-    border-radius: 12px;
+    background: var(--white);
+    border-radius: 16px;
     overflow: hidden;
+    box-shadow: 0 15px 35px rgba(26, 45, 66, 0.15);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 12px;
+    font-size: 12.5px;
 }
 
+/* HEADER */
 thead {
-    background: #f4f6fb;
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary)
+    );
 }
 
-th, td {
-    padding: 10px;
+thead th {
+    color: var(--white);
+    padding: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* CELL */
+td {
+    padding: 11px;
     text-align: center;
-    border-bottom: 1px solid #eee;
+    color: var(--primary);
+    border-bottom: 1px solid rgba(26, 45, 66, 0.08);
 }
 
+/* ROW */
 tbody tr:nth-child(odd) {
-    background: #fcfcfc;
+    background: #f7f9fa;
 }
 
 tbody tr:hover {
-    background: #f1f5ff;
+    background: rgba(26, 45, 66, 0.05);
 }
