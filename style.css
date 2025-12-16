@@ -1,4 +1,4 @@
-/* RESET DASAR */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -8,99 +8,87 @@
 /* BODY */
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f6f8;
-    padding: 30px;
-    color: #333;
-}
-
-/* CONTAINER */
-.container {
-    max-width: 960px;
-    margin: auto;
     background-color: #ffffff;
-    padding: 25px 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-/* JUDUL */
-h1 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #2c3e50;
-}
-
-h2 {
-    margin-top: 25px;
-    margin-bottom: 10px;
-    color: #34495e;
-}
-
-/* LIST ANGGOTA */
-ul {
-    margin-left: 20px;
-    line-height: 1.9;
-}
-
-ul li {
-    list-style-type: disc;
+    padding: 20px;
+    color: #333;
 }
 
 /* TABLE */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 15px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
-thead {
-    background-color: #2c3e50;
-    color: #ffffff;
-}
-
-th, td {
-    padding: 12px;
-    border: 1px solid #dcdcdc;
+/* HEADER */
+thead th {
+    font-weight: bold;
     text-align: center;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
 }
 
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tbody tr:hover {
-    background-color: #eef3f7;
-}
-
-/* SHIFT BADGE (OPSIONAL) */
-.shift-pagi {
-    background-color: #e3f2fd;
-    color: #1565c0;
-    padding: 5px 10px;
-    border-radius: 6px;
+/* DATE COLUMN */
+th.date,
+td.date {
+    background-color: #ffffff;
     font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
 }
 
-.shift-malam {
-    background-color: #ede7f6;
-    color: #4527a0;
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-weight: bold;
+/* CELL UMUM */
+td {
+    padding: 8px 6px;
+    text-align: center;
+    border: 1px solid #e6e6e6;
+}
+
+/* WARNA TIAP WEB (PASTEL) */
+th.suria, td.suria {
+    background-color: #fde7c7; /* krem */
+}
+
+th.hakabet, td.hakabet {
+    background-color: #dff0d8; /* hijau pastel */
+}
+
+th.viobet, td.viobet {
+    background-color: #f3d9e5; /* pink pastel */
+}
+
+th.tempo, td.tempo {
+    background-color: #dbeaf7; /* biru pastel */
+}
+
+th.fila, td.fila {
+    background-color: #f6d1c1; /* peach */
+}
+
+th.ijobet, td.ijobet {
+    background-color: #dfeef1; /* biru kehijauan */
+}
+
+th.hahawin, td.hahawin {
+    background-color: #e6def4; /* ungu pastel */
+}
+
+th.offday, td.offday {
+    background-color: #ffffff;
+}
+
+/* HOVER EFFECT */
+tbody tr:hover td {
+    background-color: #f5f5f5;
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
-    body {
-        padding: 15px;
-    }
-
+@media (max-width: 900px) {
     table {
-        font-size: 12px;
+        font-size: 11px;
     }
 
-    th, td {
-        padding: 8px;
+    td, th {
+        padding: 6px;
     }
 }
