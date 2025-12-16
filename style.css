@@ -50,30 +50,23 @@ body {
 
 /* SHIFT BOX */
 .shift-box {
-    background: var(--white);
-    border-radius: 14px;
+    background: #ffffff;
+    border-radius: 12px;
     padding: 16px 18px;
-    margin-bottom: 20px;
-    box-shadow: 0 10px 25px rgba(26, 45, 66, 0.08);
+    margin-bottom: 24px; /* JARAK PAGI & MALAM */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.04);
 }
 
 .shift-box h3 {
     font-size: 13px;
     font-weight: 600;
-    letter-spacing: 0.3px;
-    margin-bottom: 12px;
-    color: var(--secondary);
-}
-
-.shift-box ul {
-    list-style: none;
+    margin-bottom: 10px;
 }
 
 .shift-box li {
     font-size: 13px;
     padding: 6px 0;
-    color: var(--primary);
-    border-bottom: 1px solid rgba(26, 45, 66, 0.08);
+    border-bottom: 1px solid #eee;
 }
 
 .shift-box li:last-child {
