@@ -1,3 +1,80 @@
+/* =========================
+   THEME VARIABLES
+========================= */
+:root {
+  --bg-main: #D4D8DD;
+  --bg-card: #ffffff;
+  --bg-sidebar-light: #F5F7F8;
+  --bg-sidebar-dark: #E9EDF0;
+  --text-main: #1A2D42;
+  --header-bg: linear-gradient(180deg, #1A2D42, #2E4156);
+  --row-alt: #F7F9FB;
+}
+
+body[data-theme="night"] {
+  --bg-main: #AAB7B7;
+  --bg-card: #C0C8CA;
+  --bg-sidebar-light: #C0C8CA;
+  --bg-sidebar-dark: #AAB7B7;
+  --text-main: #1A2D42;
+  --header-bg: linear-gradient(180deg, #2E4156, #1A2D42);
+  --row-alt: #D4D8DD;
+}
+
+body[data-theme="dark"] {
+  --bg-main: #1A2D42;
+  --bg-card: #2E4156;
+  --bg-sidebar-light: #2E4156;
+  --bg-sidebar-dark: #1A2D42;
+  --text-main: #EDEFF2;
+  --header-bg: linear-gradient(180deg, #1A2D42, #000000);
+  --row-alt: #24364D;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  transition: 0.3s ease;
+}
+
+.container,
+.table-card,
+.shift-box {
+  background: var(--bg-card);
+}
+
+table thead {
+  background: var(--header-bg);
+  color: #fff;
+}
+
+tbody tr:nth-child(even) {
+  background: var(--row-alt);
+}
+
+td {
+  vertical-align: top;
+  padding: 14px 12px;
+  position: relative;
+}
+
+/* garis pemisah halus dalam cell */
+td span {
+  display: block;
+  padding-bottom: 6px;
+}
+
+td span + span {
+  border-top: 1px dashed rgba(0,0,0,0.08);
+  padding-top: 8px;
+}
+
+/* hover highlight */
+td:hover {
+  background: rgba(0,0,0,0.04);
+}
+
+
 /* ===============================
    DESIGN SYSTEM
 ================================ */
