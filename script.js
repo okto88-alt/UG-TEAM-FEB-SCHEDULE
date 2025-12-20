@@ -212,22 +212,16 @@ function renderTable(data) {
 /*********************************
  * SEARCH STAFF (FIXED)
  *********************************/
-function searchNama() {
-    const q = document.getElementById("searchInput").value.toLowerCase();
-    const result = [];
+function searchByName(name) {
+  const keyword = name.toLowerCase().trim();
+  const rows = document.querySelectorAll("tbody tr");
 
-    schedule.forEach(day => {
-        for (let web in day.pagi) {
-            if (day.pagi[web].toLowerCase().includes(q)) {
-                result.push(`${day.date} | ${day.pagi[web]} | ${web} (Pagi)`);
-            }
-        }
-        for (let web in day.malam) {
-            if (day.malam[web].toLowerCase().includes(q)) {
-                result.push(`${day.date} | ${day.malam[web]} | ${web} (Malam)`);
-            }
-        }
-    });
+  rows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    row.style.display = text.includes(keyword) ? "" : "none";
+  });
+}
+
 
     document.getElementById("searchResult").innerHTML =
         q && result.length ? result.join("<br>") : "";
