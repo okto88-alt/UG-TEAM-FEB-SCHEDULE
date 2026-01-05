@@ -230,102 +230,6 @@ function findStaffSchedule(searchTerm) {
 function getScheduleData() {
     return [
         {
-            date: '2026-01-01',
-            dayName: 'Thursday',
-            morning: {
-                'SURIA88': 'Andi',
-                'HAKABET': 'Anggie',
-                'VIOBET': 'Chandy',
-                'TEMPO88': 'Firman',
-                'FILA88': 'Angga',
-                'IJOBET': 'Jerry',
-                'HAHAWIN88': 'Andi, Anggie',
-                'OFF DAY UG': 'Kris, Dea'
-            },
-            evening: {
-                'SURIA88': 'Kenny',
-                'HAKABET': 'Sindy',
-                'VIOBET': 'Heno',
-                'TEMPO88': 'Alfan',
-                'FILA88': 'Kheiren',
-                'IJOBET': 'Valvi',
-                'HAHAWIN88': 'Alfan',
-                'OFF DAY UG': '-'
-            }
-        },
-        {
-            date: '2026-01-02',
-            dayName: 'Friday',
-            morning: {
-            'SURIA88': 'Dea',
-            'HAKABET': 'Anggie',
-            'VIOBET': 'Chandy',
-            'TEMPO88': 'Firman',
-            'FILA88': 'Angga',
-            'IJOBET': 'Kris',
-            'HAHAWIN88': 'Firman, Anggie',
-            'OFF DAY UG': 'Sindy, Valvi'
-        },
-            evening: {
-            'SURIA88': 'Andi',
-            'HAKABET': 'Kenny',
-            'VIOBET': 'Heno',
-            'TEMPO88': 'Alfan',
-            'FILA88': 'Kheiren',
-            'IJOBET': 'Jerry',
-            'HAHAWIN88': 'Alfan',
-            'OFF DAY UG': '-'
-            }
-        },
-        {
-            date: '2026-01-03',
-            dayName: 'Saturday',
-            morning: {
-            'SURIA88': 'Dea',
-            'HAKABET': 'Sindy',
-            'VIOBET': 'Chandy',
-            'TEMPO88': 'Egi',
-            'FILA88': 'Kris',
-            'IJOBET': 'Valvi',
-            'HAHAWIN88': 'Dea',
-            'OFF DAY UG': 'Kheiren'
-        },
-            evening: {
-            'SURIA88': 'Andi',
-            'HAKABET': 'Firman',
-            'VIOBET': 'Heno',
-            'TEMPO88': 'Alfan',
-            'FILA88': 'Kenny',
-            'IJOBET': 'Jerry',
-            'HAHAWIN88': 'Alfan',
-            'OFF DAY UG': '-'
-            }
-        },
-        {
-            date: '2026-01-04',
-            dayName: 'Sunday',
-            morning: {
-            'SURIA88': 'Dea',
-            'HAKABET': 'Sindy',
-            'VIOBET': 'Kris',
-            'TEMPO88': 'Egi',
-            'FILA88': 'Kheiren',
-            'IJOBET': 'Valvi',
-            'HAHAWIN88': 'Dea',
-            'OFF DAY UG': '-'
-        },
-            evening: {
-            'SURIA88': 'Andi',
-            'HAKABET': 'Firman',
-            'VIOBET': 'Anggie',
-            'TEMPO88': 'Alfan',
-            'FILA88': 'Angga',
-            'IJOBET': 'Jerry',
-            'HAHAWIN88': 'Alfan',
-            'OFF DAY UG': 'Vindy'
-            }
-        },
-        {
             date: '2026-01-05',
             dayName: 'Monday',      
             morning: {
@@ -469,8 +373,32 @@ function getScheduleData() {
             'OFF DAY UG': 'Jerry'
             }
         },
-                                {
+                         {
             date: '2026-01-11',
+            dayName: 'Sunday',
+            morning: {
+            'SURIA88': 'Dea',
+            'HAKABET': 'Sindy',
+            'VIOBET': 'Heno',
+            'TEMPO88': 'Egi',
+            'FILA88': 'Kris',
+            'IJOBET': 'Valvi',
+            'HAHAWIN88': 'Dea',
+            'OFF DAY UG': 'Kheiren'
+        },
+            evening: {
+            'SURIA88': 'Andi',
+            'HAKABET': 'Firman',
+            'VIOBET': 'Anggie',
+            'TEMPO88': 'Alfan',
+            'FILA88': 'Angga',
+            'IJOBET': 'Kenny',
+            'HAHAWIN88': 'Alfan',
+            'OFF DAY UG': 'Jerry'
+            }
+        },
+                                {
+            date: '2026-01-12',
             dayName: 'Sunday',
             morning: {
             'SURIA88': 'Dea',
@@ -481,6 +409,102 @@ function getScheduleData() {
             'IJOBET': 'Valvi',
             'HAHAWIN88': 'Dea',
             'OFF DAY UG': 'Kris'
+        },
+            evening: {
+            'SURIA88': 'Andi',
+            'HAKABET': 'Firman',
+            'VIOBET': 'Anggie',
+            'TEMPO88': 'Alfan',
+            'FILA88': 'Angga',
+            'IJOBET': 'Jerry',
+            'HAHAWIN88': 'Alfan',
+            'OFF DAY UG': 'Vindy'
+            }
+        },
+         {
+            date: '2026-01-13',
+            dayName: 'Monday',
+            morning: {
+                'SURIA88': 'Andi',
+                'HAKABET': 'Anggie',
+                'VIOBET': 'Chandy',
+                'TEMPO88': 'Firman',
+                'FILA88': 'Angga',
+                'IJOBET': 'Jerry',
+                'HAHAWIN88': 'Andi, Anggie',
+                'OFF DAY UG': 'Kris, Dea'
+            },
+            evening: {
+                'SURIA88': 'Kenny',
+                'HAKABET': 'Sindy',
+                'VIOBET': 'Heno',
+                'TEMPO88': 'Alfan',
+                'FILA88': 'Kheiren',
+                'IJOBET': 'Valvi',
+                'HAHAWIN88': 'Alfan',
+                'OFF DAY UG': '-'
+            }
+        },
+        {
+            date: '2026-01-14',
+            dayName: 'Tuesday',
+            morning: {
+            'SURIA88': 'Dea',
+            'HAKABET': 'Anggie',
+            'VIOBET': 'Chandy',
+            'TEMPO88': 'Firman',
+            'FILA88': 'Angga',
+            'IJOBET': 'Kris',
+            'HAHAWIN88': 'Firman, Anggie',
+            'OFF DAY UG': 'Sindy, Valvi'
+        },
+            evening: {
+            'SURIA88': 'Andi',
+            'HAKABET': 'Kenny',
+            'VIOBET': 'Heno',
+            'TEMPO88': 'Alfan',
+            'FILA88': 'Kheiren',
+            'IJOBET': 'Jerry',
+            'HAHAWIN88': 'Alfan',
+            'OFF DAY UG': '-'
+            }
+        },
+        {
+            date: '2026-01-15',
+            dayName: 'Wednesday',
+            morning: {
+            'SURIA88': 'Dea',
+            'HAKABET': 'Sindy',
+            'VIOBET': 'Chandy',
+            'TEMPO88': 'Egi',
+            'FILA88': 'Kris',
+            'IJOBET': 'Valvi',
+            'HAHAWIN88': 'Dea',
+            'OFF DAY UG': 'Kheiren'
+        },
+            evening: {
+            'SURIA88': 'Andi',
+            'HAKABET': 'Firman',
+            'VIOBET': 'Heno',
+            'TEMPO88': 'Alfan',
+            'FILA88': 'Kenny',
+            'IJOBET': 'Jerry',
+            'HAHAWIN88': 'Alfan',
+            'OFF DAY UG': '-'
+            }
+        },
+        {
+            date: '2026-01-16',
+            dayName: 'Thursday',
+            morning: {
+            'SURIA88': 'Dea',
+            'HAKABET': 'Sindy',
+            'VIOBET': 'Kris',
+            'TEMPO88': 'Egi',
+            'FILA88': 'Kheiren',
+            'IJOBET': 'Valvi',
+            'HAHAWIN88': 'Dea',
+            'OFF DAY UG': '-'
         },
             evening: {
             'SURIA88': 'Andi',
@@ -662,6 +686,7 @@ function generateScheduleTable() {
 
     tableBody.innerHTML = tableHTML;
 }
+
 
 
 
