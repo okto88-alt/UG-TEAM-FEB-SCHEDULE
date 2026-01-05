@@ -9,21 +9,19 @@
     --text-secondary: #475569;
     --text-light: #64748b;
     
-    /* Vibrant Pastel Palette */
-    --pastel-blue: #bfdbfe;
-    --pastel-blue-dark: #93c5fd;
-    --pastel-purple: #ddd6fe;
-    --pastel-purple-dark: #c4b5fd;
-    --pastel-green: #bbf7d0;
-    --pastel-green-dark: #86efac;
-    --pastel-yellow: #fde047;
-    --pastel-yellow-dark: #facc15;
-    --pastel-pink: #f9a8d4;
-    --pastel-pink-dark: #f472b6;
-    --pastel-orange: #fed7aa;
-    --pastel-orange-dark: #fdba74;
-    --pastel-teal: #99f6e4;
-    --pastel-cyan: #67e8f9;
+    /* Soft & Calm Pastel Palette */
+    --pastel-blue: #dbeafe;
+    --pastel-blue-dark: #bfdbfe;
+    --pastel-purple: #f3e8ff;
+    --pastel-purple-dark: #e9d5ff;
+    --pastel-green: #d1fae5;
+    --pastel-green-soft: #a7f3d0;
+    --pastel-green-light: #ecfdf5;
+    --pastel-yellow: #fef9c3;
+    --pastel-yellow-soft: #fde68a;
+    --pastel-yellow-light: #fefce8;
+    --pastel-pink: #fce7f3;
+    --pastel-pink-dark: #fbcfe8;
     --pastel-gray: #e2e8f0;
     --pastel-gray-light: #f8fafc;
     
@@ -33,15 +31,15 @@
     --gradient-header: linear-gradient(135deg, #bfdbfe 0%, #ddd6fe 50%, #f9a8d4 100%);
     --gradient-card: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
     
-    /* Shadows */
-    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.05);
-    --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.08);
-    --shadow-strong: 0 15px 40px rgba(0, 0, 0, 0.12);
-    --shadow-glow-blue: 0 0 20px rgba(191, 219, 254, 0.5);
-    --shadow-glow-purple: 0 0 20px rgba(221, 214, 254, 0.5);
-    --shadow-glow-green: 0 0 20px rgba(187, 247, 208, 0.5);
-    --shadow-glow-yellow: 0 0 20px rgba(253, 224, 71, 0.5);
-    --shadow-glow-pink: 0 0 20px rgba(249, 168, 212, 0.5);
+    /* Soft Shadows */
+    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-medium: 0 4px 15px rgba(0, 0, 0, 0.06);
+    --shadow-strong: 0 8px 25px rgba(0, 0, 0, 0.08);
+    --shadow-glow-blue: 0 0 15px rgba(191, 219, 254, 0.4);
+    --shadow-glow-purple: 0 0 15px rgba(221, 214, 254, 0.4);
+    --shadow-glow-green: 0 0 15px rgba(209, 250, 229, 0.5);
+    --shadow-glow-yellow: 0 0 15px rgba(254, 249, 195, 0.5);
+    --shadow-glow-pink: 0 0 15px rgba(252, 231, 243, 0.5);
 }
 
 /* ============================================
@@ -276,7 +274,7 @@ body {
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--pastel-green), var(--pastel-yellow), var(--pastel-pink), var(--pastel-blue));
+    background: linear-gradient(90deg, var(--pastel-green), var(--pastel-yellow), var(--pastel-blue), var(--pastel-purple));
     background-size: 300% 100%;
     animation: gradientSlide 3s linear infinite;
 }
@@ -328,34 +326,14 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Day Shift Label - Vibrant Green */
+/* Day Shift Label - Soft Green */
 .shift-row:first-child .shift-label {
-    color: #16a34a;
-    animation: labelPulseGreen 2s ease-in-out infinite;
+    color: #059669;
 }
 
-@keyframes labelPulseGreen {
-    0%, 100% {
-        text-shadow: 1px 1px 2px rgba(22, 163, 74, 0.3);
-    }
-    50% {
-        text-shadow: 1px 1px 4px rgba(22, 163, 74, 0.6), 0 0 10px rgba(22, 163, 74, 0.3);
-    }
-}
-
-/* Night Shift Label - Vibrant Orange */
+/* Night Shift Label - Soft Orange */
 .shift-row:last-child .shift-label {
-    color: #ea580c;
-    animation: labelPulseOrange 2s ease-in-out infinite;
-}
-
-@keyframes labelPulseOrange {
-    0%, 100% {
-        text-shadow: 1px 1px 2px rgba(234, 88, 12, 0.3);
-    }
-    50% {
-        text-shadow: 1px 1px 4px rgba(234, 88, 12, 0.6), 0 0 10px rgba(234, 88, 12, 0.3);
-    }
+    color: #d97706;
 }
 
 /* ============================================
@@ -434,52 +412,31 @@ body {
     transform: translateY(-2px) scale(1.04);
 }
 
-/* Day Shift Bubbles - Vibrant Mint */
+/* Day Shift Bubbles - Soft Mint */
 .shift-row:first-child .staff-bubble {
-    background: linear-gradient(135deg, var(--pastel-green) 0%, var(--pastel-green-dark) 100%);
-    border-color: rgba(134, 239, 172, 0.8);
+    background: linear-gradient(135deg, var(--pastel-green) 0%, var(--pastel-green-soft) 100%);
+    border-color: rgba(167, 243, 208, 0.5);
 }
 
 .shift-row:first-child .staff-bubble:hover {
-    background: linear-gradient(135deg, var(--pastel-green-dark) 0%, #4ade80 100%);
+    background: linear-gradient(135deg, var(--pastel-green-soft) 0%, var(--pastel-green) 100%);
     border-color: var(--pastel-green);
     box-shadow: var(--shadow-glow-green);
-    animation: bounce 0.6s ease infinite;
 }
 
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(-4px) scale(1.08) rotate(2deg);
-    }
-    50% {
-        transform: translateY(-6px) scale(1.1) rotate(-1deg);
-    }
-}
 
-/* Night Shift Bubbles - Vibrant Yellow/Orange */
+/* Night Shift Bubbles - Soft Cream */
 .shift-row:last-child .staff-bubble {
-    background: linear-gradient(135deg, var(--pastel-yellow) 0%, var(--pastel-yellow-dark) 100%);
-    border-color: rgba(250, 204, 21, 0.8);
+    background: linear-gradient(135deg, var(--pastel-yellow) 0%, var(--pastel-yellow-soft) 100%);
+    border-color: rgba(253, 230, 138, 0.5);
 }
 
 .shift-row:last-child .staff-bubble:hover {
-    background: linear-gradient(135deg, var(--pastel-yellow-dark) 0%, #fbbf24 100%);
+    background: linear-gradient(135deg, var(--pastel-yellow-soft) 0%, var(--pastel-yellow) 100%);
     border-color: var(--pastel-yellow);
     box-shadow: var(--shadow-glow-yellow);
-    animation: shake 0.6s ease infinite;
 }
 
-@keyframes shake {
-    0%, 100% {
-        transform: translateY(-4px) scale(1.08) rotate(2deg);
-    }
-    25% {
-        transform: translateY(-4px) scale(1.08) rotate(-2deg);
-    }
-    75% {
-        transform: translateY(-4px) scale(1.08) rotate(2deg);
-    }
-}
 
 /* ============================================
    OFF STATUS WITH PULSE
@@ -683,39 +640,23 @@ body {
    SEARCH HIGHLIGHT ANIMATION
    ============================================ */
 .staff-card.search-highlight {
-    background: linear-gradient(135deg, var(--pastel-green) 0%, var(--pastel-green-dark) 100%);
-    border-color: var(--pastel-green-dark);
-    animation: highlight 1s ease-in-out, glowPulse 2s ease-in-out infinite;
-    box-shadow: var(--shadow-glow-green);
+    background: linear-gradient(135deg, var(--pastel-green) 0%, var(--pastel-green-soft) 100%);
+    border-color: var(--pastel-green-soft);
+    animation: highlight 1s ease-in-out;
 }
 
 @keyframes highlight {
     0%, 100% {
         transform: scale(1);
     }
-    25% {
-        transform: scale(1.03);
-    }
     50% {
-        transform: scale(1.06);
-    }
-    75% {
         transform: scale(1.03);
-    }
-}
-
-@keyframes glowPulse {
-    0%, 100% {
-        box-shadow: var(--shadow-glow-green);
-    }
-    50% {
-        box-shadow: 0 0 40px rgba(134, 239, 172, 0.8);
     }
 }
 
 .staff-card.search-hidden {
-    opacity: 0.2;
-    transform: scale(0.9);
+    opacity: 0.3;
+    transform: scale(0.95);
     pointer-events: none;
     transition: all 0.5s ease;
 }
@@ -890,26 +831,26 @@ body {
     transform: scale(1.05);
 }
 
-/* Day Row Styling - Vibrant Green */
+/* Day Row Styling - Soft Mint Green */
 .day-row:nth-child(odd) td {
-    background: linear-gradient(180deg, var(--pastel-green) 0%, rgba(187, 247, 208, 0.7) 100%);
-    border-top: 3px solid #22c55e;
+    background: linear-gradient(180deg, var(--pastel-green) 0%, var(--pastel-green-light) 100%);
+    border-top: 2px solid var(--pastel-green-soft);
 }
 
 .day-row:nth-child(even) td {
-    background: linear-gradient(180deg, rgba(187, 247, 208, 0.5) 0%, rgba(187, 247, 208, 0.3) 100%);
-    border-top: 3px solid #86efac;
+    background: linear-gradient(180deg, var(--pastel-green-light) 0%, rgba(236, 253, 245, 0.8) 100%);
+    border-top: 2px solid rgba(167, 243, 208, 0.4);
 }
 
-/* Night Row Styling - Vibrant Yellow/Orange */
+/* Night Row Styling - Soft Cream Yellow */
 .night-row:nth-child(odd) td {
-    background: linear-gradient(180deg, var(--pastel-yellow) 0%, rgba(253, 224, 71, 0.7) 100%);
-    border-top: 3px solid #facc15;
+    background: linear-gradient(180deg, var(--pastel-yellow) 0%, var(--pastel-yellow-light) 100%);
+    border-top: 2px solid var(--pastel-yellow-soft);
 }
 
 .night-row:nth-child(even) td {
-    background: linear-gradient(180deg, rgba(253, 224, 71, 0.5) 0%, rgba(253, 224, 71, 0.3) 100%);
-    border-top: 3px solid #fde047;
+    background: linear-gradient(180deg, var(--pastel-yellow-light) 0%, rgba(254, 252, 232, 0.8) 100%);
+    border-top: 2px solid rgba(253, 230, 138, 0.4);
 }
 
 /* Date cell special styling */
@@ -938,24 +879,13 @@ body {
     font-weight: 500;
 }
 
-/* Off Day - Vibrant Pink */
+/* Off Day - Soft Pink */
 .off-day {
     color: #db2777;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--pastel-pink) 0%, var(--pastel-pink-dark) 100%) !important;
-    border: 2px solid rgba(219, 39, 119, 0.4);
-    border-radius: 8px;
-    animation: offDayPulse 2s ease-in-out infinite;
-    box-shadow: var(--shadow-glow-pink);
-}
-
-@keyframes offDayPulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
+    font-weight: 600;
+    background: var(--pastel-pink) !important;
+    border: 1px solid var(--pastel-pink-dark);
+    border-radius: 6px;
 }
 
 /* Table Row Hover Effects */
@@ -1055,19 +985,19 @@ body {
     
     /* Reduce color intensity on mobile for better readability */
     .day-row:nth-child(odd) td {
-        background: rgba(187, 247, 208, 0.9);
+        background: rgba(236, 253, 245, 0.9);
     }
     
     .day-row:nth-child(even) td {
-        background: rgba(187, 247, 208, 0.6);
+        background: rgba(236, 253, 245, 0.6);
     }
     
     .night-row:nth-child(odd) td {
-        background: rgba(253, 224, 71, 0.9);
+        background: rgba(254, 252, 232, 0.9);
     }
     
     .night-row:nth-child(even) td {
-        background: rgba(253, 224, 71, 0.6);
+        background: rgba(254, 252, 232, 0.6);
     }
 }
 
@@ -1231,35 +1161,15 @@ body {
 }
 
 .result-shift.morning {
-    background: linear-gradient(135deg, var(--pastel-green) 0%, var(--pastel-green-dark) 100%);
-    color: #16a34a;
-    border-color: rgba(34, 197, 94, 0.3);
-    animation: morningGlow 2s ease-in-out infinite;
-}
-
-@keyframes morningGlow {
-    0%, 100% {
-        box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
-    }
-    50% {
-        box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
-    }
+    background: linear-gradient(135deg, var(--pastel-green) 0%, var(--pastel-green-soft) 100%);
+    color: #059669;
+    border-color: rgba(5, 150, 105, 0.2);
 }
 
 .result-shift.evening {
-    background: linear-gradient(135deg, var(--pastel-yellow) 0%, var(--pastel-yellow-dark) 100%);
-    color: #ea580c;
-    border-color: rgba(234, 88, 12, 0.3);
-    animation: eveningGlow 2s ease-in-out infinite;
-}
-
-@keyframes eveningGlow {
-    0%, 100% {
-        box-shadow: 0 0 10px rgba(234, 88, 12, 0.3);
-    }
-    50% {
-        box-shadow: 0 0 20px rgba(234, 88, 12, 0.5);
-    }
+    background: linear-gradient(135deg, var(--pastel-yellow) 0%, var(--pastel-yellow-soft) 100%);
+    color: #d97706;
+    border-color: rgba(217, 119, 6, 0.2);
 }
 
 .result-websites {
