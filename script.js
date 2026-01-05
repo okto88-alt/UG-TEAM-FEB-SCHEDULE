@@ -406,9 +406,9 @@ function getScheduleData() {
             'VIOBET': 'Heno',
             'TEMPO88': 'Egi',
             'FILA88': 'Kheiren',
-            'IJOBET': 'Valvi',
+            'IJOBET': 'Kris',
             'HAHAWIN88': 'Dea',
-            'OFF DAY UG': 'Kris'
+            'OFF DAY UG': 'Valvi'
         },
             evening: {
             'SURIA88': 'Andi',
@@ -437,12 +437,12 @@ function getScheduleData() {
             evening: {
             'SURIA88': 'Andi',
             'HAKABET': 'Firman',
-            'VIOBET': 'Vindy',
+            'VIOBET': 'Kenny',
             'TEMPO88': 'Alfan',
             'FILA88': 'Anggie',
-            'IJOBET': 'Kenny',
+            'IJOBET': 'Jerry',
             'HAHAWIN88': 'Alfan',
-            'OFF DAY UG': 'Angga, Jerry'
+            'OFF DAY UG': 'Angga'
             }
         },
                         {
@@ -464,9 +464,9 @@ function getScheduleData() {
             'VIOBET': 'Anggie',
             'TEMPO88': 'Alfan',
             'FILA88': 'Angga',
-            'IJOBET': 'Jerry',
-            'HAHAWIN88': 'Kenny',
-            'OFF DAY UG': '-'
+            'IJOBET': 'Kenny',
+            'HAHAWIN88': 'Alfan',
+            'OFF DAY UG': 'Jerry'
             }
         },
                                 {
@@ -475,12 +475,12 @@ function getScheduleData() {
             morning: {
             'SURIA88': 'Dea',
             'HAKABET': 'Sindy',
-            'VIOBET': 'Kris',
+            'VIOBET': 'Heno',
             'TEMPO88': 'Egi',
             'FILA88': 'Kheiren',
             'IJOBET': 'Valvi',
             'HAHAWIN88': 'Dea',
-            'OFF DAY UG': 'Heno'
+            'OFF DAY UG': 'Kris'
         },
             evening: {
             'SURIA88': 'Andi',
@@ -662,6 +662,7 @@ function generateScheduleTable() {
 
     tableBody.innerHTML = tableHTML;
 }
+
 
 
 
