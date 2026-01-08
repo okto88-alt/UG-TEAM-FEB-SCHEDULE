@@ -341,12 +341,12 @@ function getScheduleData() {
             evening: {
             'SURIA88': 'Andi',
             'HAKABET': 'Firman',
-            'VIOBET': 'Kenny',
+            'VIOBET': 'Vindy',
             'TEMPO88': 'Alfan',
             'FILA88': 'Anggie',
-            'IJOBET': 'Jerry',
+            'IJOBET': 'Kenny',
             'HAHAWIN88': 'Alfan',
-            'OFF DAY UG': 'Angga'
+            'OFF DAY UG': 'Angga, Jerry'
             }
         },
                         {
@@ -686,6 +686,7 @@ function generateScheduleTable() {
 
     tableBody.innerHTML = tableHTML;
 }
+
 
 
 
