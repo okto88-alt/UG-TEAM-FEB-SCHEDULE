@@ -321,7 +321,7 @@ function getScheduleData() {
             'TEMPO88': 'Egi',
             'FILA88': 'Heno',
             'IJOBET': 'Valvi',
-            'HAHAWIN88': 'Kris',
+            'HAHAWIN88': 'Alfan',
             'OFF DAY UG': 'Kheiren'
             }
         },
@@ -365,12 +365,12 @@ function getScheduleData() {
             evening: {
             'SURIA88': 'Alfan',
             'HAKABET': 'Heno',
-            'VIOBET': 'Wendi',
+            'VIOBET': 'Andi',
             'TEMPO88': 'Egi',
             'FILA88': 'Kheiren',
             'IJOBET': 'Valvi',
-            'HAHAWIN88': 'Kris',
-            'OFF DAY UG': 'Andi'
+            'HAHAWIN88': 'Wendi',
+            'OFF DAY UG': '-'
             }
         },
                          {
@@ -389,7 +389,7 @@ function getScheduleData() {
             evening: {
             'SURIA88': 'Alfan',
             'HAKABET': 'Heno',
-            'VIOBET': 'Wendi',
+            'VIOBET': 'Andi',
             'TEMPO88': 'Egi',
             'FILA88': 'Kheiren',
             'IJOBET': 'Valvi',
@@ -591,6 +591,7 @@ function generateScheduleTable() {
 
     tableBody.innerHTML = tableHTML;
 }
+
 
 
 
