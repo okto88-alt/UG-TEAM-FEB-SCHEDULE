@@ -55,6 +55,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   ['formDateFrom', 'formDateTo'].forEach(id => {
     document.getElementById(id)?.addEventListener('change', updateRangePreview);
   });
+
+  initPremiumInteractions();
 });
 
 // ============================================
@@ -236,6 +238,7 @@ function renderTable() {
 
   let html = '';
   const dates = Object.keys(grouped).sort();
+  let rowIndex = 0;
 
   dates.forEach(dateStr => {
     const dayData = grouped[dateStr];
@@ -251,7 +254,7 @@ function renderTable() {
       const rowClass = shift === 'morning' ? 'day-row' : 'night-row';
       const isFirst = idx === 0;
 
-      html += `<tr class="${rowClass}" data-id="${row.id}">`;
+      html += `<tr class="${rowClass}" data-id="${row.id}" style="--i:${rowIndex++}">`;
 
       // Checkbox (admin only)
       if (isAdmin) {
@@ -558,7 +561,7 @@ async function saveStaff() {
   if (editStaffId) {
     ({ error } = await db.from('staff').update({ name, role }).eq('id', editStaffId));
   } else {
-    ({ error } = await db.from('staff').insert({ name, role, is_active: true }));
+    ({ error } = await db.from('staff').insert({ name, role, is_active: true, shift: 'morning' }));
   }
 
   btn.disabled = false;
@@ -1041,6 +1044,71 @@ function showToast(msg, type = '') {
   toast.textContent = msg;
   document.body.appendChild(toast);
   setTimeout(() => toast.remove(), 3000);
+}
+
+// ============================================
+// PREMIUM INTERACTIONS — tilt, cursor-glow, ambient parallax
+// ============================================
+function initPremiumInteractions() {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+
+  const GLOW_SELECTOR = '.roster-card, .table-card, .search-bar, .modal, .staff-card, .pyr-card';
+  const TILT_SELECTOR = '.pyr-card, .roster-card';
+  let tiltEl = null;
+  let ticking = false;
+  let lastEvent = null;
+
+  function updateFrame() {
+    ticking = false;
+    if (!lastEvent) return;
+    const e = lastEvent;
+
+    // Cursor-glow spotlight on glass surfaces
+    const glowCard = e.target.closest(GLOW_SELECTOR);
+    if (glowCard) {
+      const gr = glowCard.getBoundingClientRect();
+      glowCard.style.setProperty('--mx', `${e.clientX - gr.left}px`);
+      glowCard.style.setProperty('--my', `${e.clientY - gr.top}px`);
+    }
+
+    // 3D tilt on cards
+    const card = e.target.closest(TILT_SELECTOR);
+    if (card !== tiltEl && tiltEl) {
+      tiltEl.style.transform = '';
+      tiltEl = null;
+    }
+    if (card) {
+      tiltEl = card;
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      const rotateX = (-py * 8).toFixed(2);
+      const rotateY = (px * 10).toFixed(2);
+      card.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px) scale(1.015)`;
+    }
+
+    // Ambient background parallax
+    const nx = e.clientX / window.innerWidth - 0.5;
+    const ny = e.clientY / window.innerHeight - 0.5;
+    document.querySelectorAll('.blob').forEach(blob => {
+      const depth = parseFloat(blob.dataset.depth || 0.03);
+      blob.style.marginLeft = `${nx * window.innerWidth * depth}px`;
+      blob.style.marginTop = `${ny * window.innerHeight * depth}px`;
+    });
+  }
+
+  document.addEventListener('mousemove', (e) => {
+    lastEvent = e;
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(updateFrame);
+    }
+  });
+
+  document.addEventListener('mouseleave', () => {
+    if (tiltEl) { tiltEl.style.transform = ''; tiltEl = null; }
+  });
 }
 
 // ============================================
