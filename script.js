@@ -55,8 +55,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   ['formDateFrom', 'formDateTo'].forEach(id => {
     document.getElementById(id)?.addEventListener('change', updateRangePreview);
   });
-
-  initPremiumInteractions();
 });
 
 // ============================================
@@ -186,9 +184,28 @@ document.addEventListener('keydown', (e) => {
 // ============================================
 // LOAD SCHEDULE
 // ============================================
-async function loadSchedule() {
+function renderScheduleSkeleton() {
   const tbody = document.getElementById('scheduleBody');
-  tbody.innerHTML = `<tr><td colspan="13" class="loading-row"><div class="spinner"></div>Loading schedule...</td></tr>`;
+  const rows = Array.from({ length: 8 }, () => `
+    <tr class="skeleton-row">
+      <td colspan="13">
+        <div class="skel-row-inner">
+          <span class="skel skel-date"></span>
+          <span class="skel skel-badge"></span>
+          <span class="skel skel-cell"></span>
+          <span class="skel skel-cell"></span>
+          <span class="skel skel-cell"></span>
+          <span class="skel skel-cell"></span>
+          <span class="skel skel-cell" style="max-width:60px"></span>
+        </div>
+      </td>
+    </tr>`).join('');
+  tbody.innerHTML = rows;
+}
+
+async function loadSchedule() {
+  renderScheduleSkeleton();
+  const tbody = document.getElementById('scheduleBody');
 
   // Get proper last day of month
   const lastDay = new Date(currentYear, currentMonth, 0).getDate();
@@ -328,6 +345,7 @@ async function loadStaff() {
 let rosterData = { morning: '', evening: '' }; // names string from DB
 
 async function loadRoster() {
+  renderRosterSkeleton();
   const { data, error } = await db.from('roster').select('*');
   if (error || !data) return;
   data.forEach(r => {
@@ -335,6 +353,14 @@ async function loadRoster() {
     if (r.shift === 'evening') rosterData.evening = r.names || '';
   });
   renderRosterBubbles();
+}
+
+function renderRosterSkeleton() {
+  const skelPills = (n) => Array.from({ length: n }, (_, i) =>
+    `<span class="skel skel-pill" style="width:${60 + (i % 3) * 18}px"></span>`
+  ).join('');
+  document.getElementById('dayShiftBubbles').innerHTML = skelPills(4);
+  document.getElementById('nightShiftBubbles').innerHTML = skelPills(3);
 }
 
 function renderRosterBubbles() {
@@ -345,11 +371,11 @@ function renderRosterBubbles() {
   const nightNames = rosterData.evening.split(',').map(n => n.trim()).filter(Boolean);
 
   dayEl.innerHTML = dayNames.length
-    ? dayNames.map(n => `<span class="bubble day">${n}</span>`).join('')
+    ? dayNames.map((n, i) => `<span class="bubble day" style="--i:${i}">${n}</span>`).join('')
     : `<span class="bubble-empty">— Empty —</span>`;
 
   nightEl.innerHTML = nightNames.length
-    ? nightNames.map(n => `<span class="bubble night">${n}</span>`).join('')
+    ? nightNames.map((n, i) => `<span class="bubble night" style="--i:${i}">${n}</span>`).join('')
     : `<span class="bubble-empty">— Empty —</span>`;
 }
 
@@ -1044,71 +1070,6 @@ function showToast(msg, type = '') {
   toast.textContent = msg;
   document.body.appendChild(toast);
   setTimeout(() => toast.remove(), 3000);
-}
-
-// ============================================
-// PREMIUM INTERACTIONS — tilt, cursor-glow, ambient parallax
-// ============================================
-function initPremiumInteractions() {
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduceMotion) return;
-
-  const GLOW_SELECTOR = '.roster-card, .table-card, .search-bar, .modal, .staff-card, .pyr-card';
-  const TILT_SELECTOR = '.pyr-card, .roster-card';
-  let tiltEl = null;
-  let ticking = false;
-  let lastEvent = null;
-
-  function updateFrame() {
-    ticking = false;
-    if (!lastEvent) return;
-    const e = lastEvent;
-
-    // Cursor-glow spotlight on glass surfaces
-    const glowCard = e.target.closest(GLOW_SELECTOR);
-    if (glowCard) {
-      const gr = glowCard.getBoundingClientRect();
-      glowCard.style.setProperty('--mx', `${e.clientX - gr.left}px`);
-      glowCard.style.setProperty('--my', `${e.clientY - gr.top}px`);
-    }
-
-    // 3D tilt on cards
-    const card = e.target.closest(TILT_SELECTOR);
-    if (card !== tiltEl && tiltEl) {
-      tiltEl.style.transform = '';
-      tiltEl = null;
-    }
-    if (card) {
-      tiltEl = card;
-      const r = card.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width - 0.5;
-      const py = (e.clientY - r.top) / r.height - 0.5;
-      const rotateX = (-py * 8).toFixed(2);
-      const rotateY = (px * 10).toFixed(2);
-      card.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px) scale(1.015)`;
-    }
-
-    // Ambient background parallax
-    const nx = e.clientX / window.innerWidth - 0.5;
-    const ny = e.clientY / window.innerHeight - 0.5;
-    document.querySelectorAll('.blob').forEach(blob => {
-      const depth = parseFloat(blob.dataset.depth || 0.03);
-      blob.style.marginLeft = `${nx * window.innerWidth * depth}px`;
-      blob.style.marginTop = `${ny * window.innerHeight * depth}px`;
-    });
-  }
-
-  document.addEventListener('mousemove', (e) => {
-    lastEvent = e;
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(updateFrame);
-    }
-  });
-
-  document.addEventListener('mouseleave', () => {
-    if (tiltEl) { tiltEl.style.transform = ''; tiltEl = null; }
-  });
 }
 
 // ============================================

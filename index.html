@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>UG-TEAM SCHEDULE</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 
 <body>
@@ -22,22 +22,28 @@
   <!-- ADMIN LOGIN MODAL -->
   <div class="modal-overlay" id="loginModal">
     <div class="modal">
-      <div class="modal-icon">⬡</div>
-      <h2 class="modal-title">Admin Access</h2>
-      <p class="modal-sub">UG-Team Schedule Management</p>
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" id="loginEmail" placeholder="admin@email.com" autocomplete="email">
+      <div class="modal__bubbles" aria-hidden="true">
+        <span class="modal__bubble modal__bubble--one"></span>
+        <span class="modal__bubble modal__bubble--two"></span>
       </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password">
+      <div class="modal__content">
+        <div class="modal-icon">⬡</div>
+        <h2 class="modal-title">Admin Access</h2>
+        <p class="modal-sub">UG-Team Schedule Management</p>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="loginEmail" placeholder="admin@email.com" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <div class="modal-error" id="loginError"></div>
+        <button class="btn-primary" id="loginBtn" onclick="adminLogin()">
+          <span id="loginBtnText">Sign In</span>
+        </button>
+        <button class="btn-ghost" onclick="closeLoginModal()">Cancel</button>
       </div>
-      <div class="modal-error" id="loginError"></div>
-      <button class="btn-primary" id="loginBtn" onclick="adminLogin()">
-        <span id="loginBtnText">Sign In</span>
-      </button>
-      <button class="btn-ghost" onclick="closeLoginModal()">Cancel</button>
     </div>
   </div>
 
@@ -239,6 +245,11 @@
 
     <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
+      <div class="sidebar__bubbles" aria-hidden="true">
+        <span class="sidebar__bubble sidebar__bubble--one"></span>
+        <span class="sidebar__bubble sidebar__bubble--two"></span>
+        <span class="sidebar__bubble sidebar__bubble--three"></span>
+      </div>
       <div class="sidebar-logo">
         <div class="logo-mark">UG</div>
         <div class="logo-text">
@@ -488,7 +499,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 </body>
 
 </html>
