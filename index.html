@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
   <title>UG-TEAM SCHEDULE</title>
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 
 <body>
@@ -326,26 +326,40 @@
 
         <!-- SHIFT ROSTER -->
         <div class="roster-card">
-          <div class="roster-row">
-            <div class="roster-label day">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="5" />
-                <path
-                  d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-              </svg>
-              DAY SHIFT
+          <div class="roster-zones">
+            <div class="shift-zone zone-day">
+              <div class="zone-head">
+                <div class="zone-badge badge-day">
+                  <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="5" />
+                    <path
+                      d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                  </svg>
+                  <span class="zone-live-dot" id="dayShiftLive" style="display:none" title="Active now"></span>
+                </div>
+                <div class="zone-head-text">
+                  <div class="zone-title">Day Shift</div>
+                  <div class="zone-count" id="dayShiftCount"></div>
+                </div>
+              </div>
+              <div class="roster-bubbles" id="dayShiftBubbles"></div>
             </div>
-            <div class="roster-bubbles" id="dayShiftBubbles"></div>
-          </div>
-          <div class="roster-divider"></div>
-          <div class="roster-row">
-            <div class="roster-label night">
-              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-              </svg>
-              NIGHT SHIFT
+            <div class="zone-divider"></div>
+            <div class="shift-zone zone-night">
+              <div class="zone-head">
+                <div class="zone-badge badge-night">
+                  <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                  </svg>
+                  <span class="zone-live-dot" id="nightShiftLive" style="display:none" title="Active now"></span>
+                </div>
+                <div class="zone-head-text">
+                  <div class="zone-title">Night Shift</div>
+                  <div class="zone-count" id="nightShiftCount"></div>
+                </div>
+              </div>
+              <div class="roster-bubbles" id="nightShiftBubbles"></div>
             </div>
-            <div class="roster-bubbles" id="nightShiftBubbles"></div>
           </div>
           <!-- Edit button, admin only -->
           <button class="btn-roster-edit" id="btnEditRoster" style="display:none" onclick="openRosterModal()">
@@ -499,7 +513,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 </body>
 
 </html>

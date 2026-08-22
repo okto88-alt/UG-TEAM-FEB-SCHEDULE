@@ -62,12 +62,29 @@ document.addEventListener('DOMContentLoaded', async () => {
 // ============================================
 function updateTime() {
   const el = document.getElementById('liveTime');
-  if (!el) return;
-  const now = new Date();
-  el.textContent = now.toLocaleString('en-US', {
-    weekday: 'short', month: 'short', day: 'numeric',
-    hour: '2-digit', minute: '2-digit', second: '2-digit'
-  });
+  if (el) {
+    const now = new Date();
+    el.textContent = now.toLocaleString('en-US', {
+      weekday: 'short', month: 'short', day: 'numeric',
+      hour: '2-digit', minute: '2-digit', second: '2-digit'
+    });
+  }
+  updateShiftLiveBadge();
+}
+
+function updateShiftLiveBadge() {
+  const hour = new Date().getHours();
+  const isDayNow = hour >= 6 && hour < 18;
+  const dayLive = document.getElementById('dayShiftLive');
+  const nightLive = document.getElementById('nightShiftLive');
+  if (dayLive) dayLive.style.display = isDayNow ? 'block' : 'none';
+  if (nightLive) nightLive.style.display = isDayNow ? 'none' : 'block';
+}
+
+function nameColor(name) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) hash = (hash * 31 + name.charCodeAt(i)) >>> 0;
+  return AVATAR_COLORS[hash % AVATAR_COLORS.length];
 }
 
 // ============================================
@@ -292,7 +309,7 @@ function renderTable() {
       }
 
       // Shift badge cell
-      html += `<td style="text-align:center">
+      html += `<td class="shift-cell ${shift === 'morning' ? 'day-accent' : 'night-accent'}" style="text-align:center">
         <span class="shift-badge ${shift === 'morning' ? 'day' : 'night'}">
           ${shift === 'morning' ? '☀ Day' : '☽ Night'}
         </span>
@@ -305,7 +322,8 @@ function renderTable() {
       });
 
       // Offday
-      html += `<td class="offday-cell">${row.offday || ''}</td>`;
+      const offdayText = (row.offday || '').split(',').map(s => s.trim()).filter(s => s && s !== '-').join(', ');
+      html += `<td class="offday-cell">${offdayText}</td>`;
 
       // Actions (admin only)
       if (isAdmin) {
@@ -366,17 +384,25 @@ function renderRosterSkeleton() {
 function renderRosterBubbles() {
   const dayEl = document.getElementById('dayShiftBubbles');
   const nightEl = document.getElementById('nightShiftBubbles');
+  const dayCountEl = document.getElementById('dayShiftCount');
+  const nightCountEl = document.getElementById('nightShiftCount');
 
   const dayNames = rosterData.morning.split(',').map(n => n.trim()).filter(Boolean);
   const nightNames = rosterData.evening.split(',').map(n => n.trim()).filter(Boolean);
 
+  const chip = (n, i, type) =>
+    `<span class="bubble ${type}" style="--i:${i}"><span class="bubble-avatar" style="background:${nameColor(n)}">${n.charAt(0).toUpperCase()}</span>${n}</span>`;
+
   dayEl.innerHTML = dayNames.length
-    ? dayNames.map((n, i) => `<span class="bubble day" style="--i:${i}">${n}</span>`).join('')
+    ? dayNames.map((n, i) => chip(n, i, 'day')).join('')
     : `<span class="bubble-empty">— Empty —</span>`;
 
   nightEl.innerHTML = nightNames.length
-    ? nightNames.map((n, i) => `<span class="bubble night" style="--i:${i}">${n}</span>`).join('')
+    ? nightNames.map((n, i) => chip(n, i, 'night')).join('')
     : `<span class="bubble-empty">— Empty —</span>`;
+
+  if (dayCountEl) dayCountEl.textContent = dayNames.length ? `${dayNames.length} on shift` : 'No one assigned';
+  if (nightCountEl) nightCountEl.textContent = nightNames.length ? `${nightNames.length} on shift` : 'No one assigned';
 }
 
 function openRosterModal() {
